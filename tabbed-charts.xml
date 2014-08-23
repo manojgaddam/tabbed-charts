@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
   <Module>
-  <ModulePrefs title="Tabs Demo" scrolling="true" >
+  <ModulePrefs title="Tabs" height="800" width="600" scrolling="true" >
     <Require feature="tabs" />
+    <Require feature="setprefs" />
   </ModulePrefs>
 <UserPref name="dailyIframeURL" display_name="Daily Chart URL" required="true" />
 <UserPref name="weeklyIframeURL" display_name="Weekly Chart URL" required="false" />
 <UserPref name="monthlyIframeURL" display_name="Monthly Chart URL" required="false" />
 <UserPref name="width" display_name="Width" required="true" />
 <UserPref name="height" display_name="Height" required="true" />
+<UserPref name="selectedTab" datatype="hidden"/>
 <Content type="html">
   <![CDATA[
 
@@ -17,7 +19,7 @@
       var tabs = new gadgets.TabSet(__MODULE_ID__, "Daily");
       function init() {
           // Technique #1: Capture the tab's ID when you create it, and use the ID to add content to the tab's corresponding <div>.
-          var daily_tab = tabs.addTab('<div style="color: red; font-weight: bold; background-color:#ccf;">Daily</div>');
+          var daily_tab = tabs.addTab('Daily');
           
           var prefs = new _IG_Prefs();
           var dailyIframeURL = prefs.getString('dailyIframeURL');
@@ -33,12 +35,7 @@
           dest.innerHTML = '';
           dest.appendChild(dailyIframe);
   
-          // Technique #2: Create the tab and define a corresponding <div> in the
-          // HTML portion of the gadget. Add static content to the <div>.
-          
-          tabs.addTab("Two", {
-             contentContainer: document.getElementById("two_id")
-          });
+          var weekly_tab = tabs.addTab('Weekly');
       }
 
       // Call init function to initialize and display tabs.
