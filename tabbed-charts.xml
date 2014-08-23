@@ -1,5 +1,4 @@
-
-dule>
+Module>
   <ModulePrefs title="Tabs Demo" height="140" scrolling="true" >
     <Require feature="tabs" />
   </ModulePrefs>
@@ -60,4 +59,3 @@ dule>
   ]]>
   </Content>
 </Module>
-
