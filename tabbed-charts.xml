@@ -3,7 +3,8 @@
   <ModulePrefs title="Tabs Demo" height="140" scrolling="true" >
     <Require feature="tabs" />
   </ModulePrefs>
-  <Content type="html">
+<UserPref name="iframeURL" display_name="URL to content" required="true" />
+<Content type="html">
   <![CDATA[
 
     <script type="text/javascript">
@@ -14,7 +15,17 @@
         // Technique #1: Capture the tab's ID when you create it, and use the ID
         // to add content to the tab's corresponding <div>.
         var one_Id = tabs.addTab('<div style="color: red; font-weight: bold; background-color:#ccf;">Cool Tab</div>');
-        document.getElementById(one_Id).innerHTML = "Content for tab One.";
+        
+        var prefs = new _IG_Prefs();
+        var iframeURL = prefs.getString('iframeURL');
+        var iframe = document.createElement('iframe');
+        iframe.setAttribute('width','600px');
+        iframe.setAttribute('height','800px');
+        iframe.setAttribute('frameborder','no');
+        iframe.setAttribute('src',iframeURL);
+        var dest = document.getElementById(one_Id);
+        dest.innerHTML = '';
+        dest.appendChild(iframe);    
 
         // Technique #2: Create the tab and define a corresponding <div> in the
         // HTML portion of the gadget. Add static content to the <div>.
@@ -40,6 +51,7 @@
            callback: callback,
            tooltip: "I'm special"
         });
+
     }
 
     // Callback that provides content to tabs Three and Four
