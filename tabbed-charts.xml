@@ -31,7 +31,7 @@
           dest.innerHTML = '';
           dest.appendChild(dailyIframe);
   
-          if(weeklyIframeURL && 0 !== weeklyIframeURL.length) {
+         // if(weeklyIframeURL && 0 !== weeklyIframeURL.length) {
             var weekly_tab = tabs.addTab('Weekly');
             var weeklyIframeURL = prefs.getString('weeklyIframeURL');
           
@@ -43,7 +43,7 @@
             var dest = document.getElementById(weekly_tab);
             dest.innerHTML = '';
             dest.appendChild(weeklyIframe);
-          }
+        //  }
           
             if(monthlyIframeURL && 0 !== monthlyIframeURL.length) {
             var monthly_tab = tabs.addTab('Monthly');
