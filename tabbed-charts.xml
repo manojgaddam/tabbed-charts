@@ -46,6 +46,7 @@
             dest.innerHTML = '';
             dest.appendChild(weeklyIframe);
           }
+          tabs.alignTabs("right", 10);
       }
 
       // Call init function to initialize and display tabs.
