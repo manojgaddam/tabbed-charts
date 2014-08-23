@@ -30,10 +30,10 @@
           var dest = document.getElementById(daily_tab);
           dest.innerHTML = '';
           dest.appendChild(dailyIframe);
-  
+ 
+          var weeklyIframeURL = prefs.getString('weeklyIframeURL');
           if(weeklyIframeURL.length !== 0) {
             var weekly_tab = tabs.addTab('Weekly');
-            var weeklyIframeURL = prefs.getString('weeklyIframeURL');
           
             var weeklyIframe = document.createElement('iframe');
             weeklyIframe.setAttribute('width','800px');
@@ -44,10 +44,10 @@
             dest.innerHTML = '';
             dest.appendChild(weeklyIframe);
           }
-          
+
+            var monthlyIframeURL = prefs.getString('monthlyIframeURL');
             if(monthlyIframeURL.length !== 0) {
             var monthly_tab = tabs.addTab('Monthly');
-            var monthlyIframeURL = prefs.getString('monthlyIframeURL');
           
             var monthlyIframe = document.createElement('iframe');
             monthlyIframe.setAttribute('width','800px');
