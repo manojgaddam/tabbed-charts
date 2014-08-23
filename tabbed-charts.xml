@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
   <Module>
-  <ModulePrefs title="Tabs" height="800" width="600" scrolling="true" >
+  <ModulePrefs title="Tabs" height="400" width="800" scrolling="true" >
     <Require feature="tabs" />
     <Require feature="setprefs" />
   </ModulePrefs>
@@ -24,7 +24,7 @@
           
           var dailyIframe = document.createElement('iframe');
           dailyIframe.setAttribute('width','800px');
-          dailyIframe.setAttribute('height','600px');
+          dailyIframe.setAttribute('height','400px');
           dailyIframe.setAttribute('frameborder','no');
           dailyIframe.setAttribute('src',dailyIframeURL);
           var dest = document.getElementById(daily_tab);
@@ -37,7 +37,7 @@
           
             var weeklyIframe = document.createElement('iframe');
             weeklyIframe.setAttribute('width','800px');
-            weeklyIframe.setAttribute('height','600px');
+            weeklyIframe.setAttribute('height','400px');
             weeklyIframe.setAttribute('frameborder','no');
             weeklyIframe.setAttribute('src',weeklyIframeURL);
             var dest = document.getElementById(weekly_tab);
@@ -51,7 +51,7 @@
           
             var monthlyIframe = document.createElement('iframe');
             monthlyIframe.setAttribute('width','800px');
-            monthlyIframe.setAttribute('height','600px');
+            monthlyIframe.setAttribute('height','400px');
             monthlyIframe.setAttribute('frameborder','no');
             monthlyIframe.setAttribute('src',monthlyIframeURL);
             var dest = document.getElementById(monthly_tab);
