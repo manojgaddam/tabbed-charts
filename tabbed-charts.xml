@@ -3,74 +3,46 @@
   <ModulePrefs title="Tabs Demo" height="140" scrolling="true" >
     <Require feature="tabs" />
   </ModulePrefs>
-<UserPref name="iframeURL" display_name="URL to content" required="true" />
+<UserPref name="dailyIframeURL" display_name="Daily Chart URL" required="true" />
+<UserPref name="weeklyIframeURL" display_name="Weekly Chart URL" required="false" />
+<UserPref name="monthlyIframeURL" display_name="Monthly Chart URL" required="false" />
+<UserPref name="width" display_name="Width" required="true" />
+<UserPref name="height" display_name="Height" required="true" />
 <Content type="html">
   <![CDATA[
 
     <script type="text/javascript">
-    // Initialize tabs, designate the tab named "Two" as
-    // the tab selected by default.
-    var tabs = new gadgets.TabSet(__MODULE_ID__, "Two");
-    function init() {
-        // Technique #1: Capture the tab's ID when you create it, and use the ID
-        // to add content to the tab's corresponding <div>.
-        var one_Id = tabs.addTab('<div style="color: red; font-weight: bold; background-color:#ccf;">Cool Tab</div>');
-        
-        var prefs = new _IG_Prefs();
-        var iframeURL = prefs.getString('iframeURL');
-        var iframe = document.createElement('iframe');
-        iframe.setAttribute('width','600px');
-        iframe.setAttribute('height','800px');
-        iframe.setAttribute('frameborder','no');
-        iframe.setAttribute('src',iframeURL);
-        var dest = document.getElementById(one_Id);
-        dest.innerHTML = '';
-        dest.appendChild(iframe);    
+      // Initialize tabs, designate the tab named "Two" as
+      // the tab selected by default.
+      var tabs = new gadgets.TabSet(__MODULE_ID__, "Daily");
+      function init() {
+          // Technique #1: Capture the tab's ID when you create it, and use the ID to add content to the tab's corresponding <div>.
+          var daily_tab = tabs.addTab('<div style="color: red; font-weight: bold; background-color:#ccf;">Daily</div>');
+          
+          var prefs = new _IG_Prefs();
+          var dailyIframeURL = prefs.getString('dailyIframeURL');
+          var width = prefs.getString('width');
+          var height = prefs.getString('height');
+          
+          var dailyIframe = document.createElement('iframe');
+          iframe.setAttribute('width',width+'px');
+          iframe.setAttribute('height',height+'px');
+          iframe.setAttribute('frameborder','no');
+          iframe.setAttribute('src',dailyIframeURL);
+          var dest = document.getElementById(daily_tab);
+          dest.innerHTML = '';
+          dest.appendChild(dailyIframe);
+  
+          // Technique #2: Create the tab and define a corresponding <div> in the
+          // HTML portion of the gadget. Add static content to the <div>.
+          
+          tabs.addTab("Two", {
+             contentContainer: document.getElementById("two_id")
+          });
+      }
 
-        // Technique #2: Create the tab and define a corresponding <div> in the
-        // HTML portion of the gadget. Add static content to the <div>.
-
-        tabs.addTab("Two", {
-           contentContainer: document.getElementById("two_id")
-        });
-
-        // Technique #3: Create the tab and define a corresponding <div> in the
-        // HTML portion of the gadget. Add static content to the <div>.
-        // Use a callback function to add dynamic content to the static content.
-
-        tabs.addTab("Three", {
-           contentContainer: document.getElementById("three_id"),
-           callback: callback
-        });
-
-        // Technique #4: Create the tab with a tooltip message. If specified <div>
-        // doesn't exist, tabs library creates one.
-        // Invoke callback function.
-        tabs.addTab("Four", {
-           contentContainer: document.getElementById("four_id"),
-           callback: callback,
-           tooltip: "I'm special"
-        });
-
-    }
-
-    // Callback that provides content to tabs Three and Four
-    function callback(tabId) {
-      var p = document.createElement("p");
-      // Get selected tab
-      var selectedTab = tabs.getSelectedTab();
-      p.innerHTML = "This is dynamic content generated in callback for tab " + selectedTab.getName();
-      document.getElementById(tabId).appendChild(p);
-    }
-
-    // Call init function to initialize and display tabs.
-    gadgets.util.registerOnLoadHandler(init);
+      // Call init function to initialize and display tabs.
+      gadgets.util.registerOnLoadHandler(init);
     </script>
-
-   <div id="two_id" style="display:none">
-<iframe height=435 width=730 src="//docs.google.com/a/flixster-inc.com/spreadsheets/d/1Ww8OCq4c5iB21fi5hjPhgoVxG-bJByb7Uw6UgMbYbmc/gviz/chartiframe?oid=919692960" seamless frameborder=0 scrolling=no></iframe>
-   </div>
-   <div id="three_id" style="display:none">This is static content for tab Three.</div>
-  ]]>
-  </Content>
+  ]]></Content>
 </Module>
