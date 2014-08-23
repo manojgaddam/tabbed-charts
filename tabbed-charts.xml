@@ -46,6 +46,20 @@
             dest.innerHTML = '';
             dest.appendChild(weeklyIframe);
           }
+          
+            if(monthlyIframeURL) {
+            var monthly_tab = tabs.addTab('Monthly');
+            var monthlyIframeURL = prefs.getString('monthlyIframeURL');
+          
+            var monthlyIframe = document.createElement('iframe');
+            monthlyIframe.setAttribute('width','800px');
+            monthlyIframe.setAttribute('height','600px');
+            monthlyIframe.setAttribute('frameborder','no');
+            monthlyIframe.setAttribute('src',monthlyIframeURL);
+            var dest = document.getElementById(monthly_tab);
+            dest.innerHTML = '';
+            dest.appendChild(monthlyIframe);
+          }
           tabs.alignTabs("right", 10);
       }
 
