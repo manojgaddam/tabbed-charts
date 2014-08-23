@@ -33,7 +33,19 @@
           dest.innerHTML = '';
           dest.appendChild(dailyIframe);
   
-          var weekly_tab = tabs.addTab('Weekly');
+          if(weeklyIframeURL) {
+            var weekly_tab = tabs.addTab('Weekly');
+            var weeklyIframeURL = prefs.getString('weeklyIframeURL');
+          
+            var weeklyIframe = document.createElement('iframe');
+            weeklyIframe.setAttribute('width','800px');
+            weeklyIframe.setAttribute('height','600px');
+            weeklyIframe.setAttribute('frameborder','no');
+            weeklyIframe.setAttribute('src',weeklyIframeURL);
+            var dest = document.getElementById(weekly_tab);
+            dest.innerHTML = '';
+            dest.appendChild(weeklyIframe);
+          }
       }
 
       // Call init function to initialize and display tabs.
