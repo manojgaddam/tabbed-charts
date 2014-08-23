@@ -58,7 +58,7 @@
             dest.innerHTML = '';
             dest.appendChild(monthlyIframe);
           }
-          tabs.alignTabs("left", 50);
+          tabs.alignTabs("right", 50);
       }
 
       // Call init function to initialize and display tabs.
