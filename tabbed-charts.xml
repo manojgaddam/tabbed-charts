@@ -31,7 +31,7 @@
           dest.innerHTML = '';
           dest.appendChild(dailyIframe);
   
-          if(weeklyIframeURL) {
+          if(weeklyIframeURL && 0 !== weeklyIframeURL.length) {
             var weekly_tab = tabs.addTab('Weekly');
             var weeklyIframeURL = prefs.getString('weeklyIframeURL');
           
@@ -45,7 +45,7 @@
             dest.appendChild(weeklyIframe);
           }
           
-            if(monthlyIframeURL) {
+            if(monthlyIframeURL && 0 !== monthlyIframeURL.length) {
             var monthly_tab = tabs.addTab('Monthly');
             var monthlyIframeURL = prefs.getString('monthlyIframeURL');
           
