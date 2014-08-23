@@ -7,8 +7,6 @@
 <UserPref name="dailyIframeURL" display_name="Daily Chart URL" required="true" />
 <UserPref name="weeklyIframeURL" display_name="Weekly Chart URL" required="false" />
 <UserPref name="monthlyIframeURL" display_name="Monthly Chart URL" required="false" />
-<UserPref name="width" display_name="Width" required="true" />
-<UserPref name="height" display_name="Height" required="true" />
 <UserPref name="selectedTab" datatype="hidden"/>
 <Content type="html">
   <![CDATA[
@@ -60,7 +58,7 @@
             dest.innerHTML = '';
             dest.appendChild(monthlyIframe);
           }
-          tabs.alignTabs("right", 50);
+          tabs.alignTabs("left", 50);
       }
 
       // Call init function to initialize and display tabs.
