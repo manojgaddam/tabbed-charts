@@ -23,12 +23,10 @@
           
           var prefs = new _IG_Prefs();
           var dailyIframeURL = prefs.getString('dailyIframeURL');
-          var width = prefs.getString('width');
-          var height = prefs.getString('height');
           
           var dailyIframe = document.createElement('iframe');
-          dailyIframe.setAttribute('width',width+'px');
-          dailyIframe.setAttribute('height',height+'px');
+          dailyIframe.setAttribute('width','800px');
+          dailyIframe.setAttribute('height','600px');
           dailyIframe.setAttribute('frameborder','no');
           dailyIframe.setAttribute('src',dailyIframeURL);
           var dest = document.getElementById(daily_tab);
